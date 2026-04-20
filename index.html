@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic Présidentiel — Bassirou Diomaye Faye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg2: #f7f7f5;
+  --bg3: #eeecea;
+  --border: rgba(0,0,0,0.09);
+  --border2: rgba(0,0,0,0.16);
+  --text: #1a1917;
+  --text2: #5a5855;
+  --text3: #9a9890;
+  --accent: #a07830;
+  --accent2: #7a5a20;
+  --purple: #5a4fd4;
+  --purple-bg: rgba(90,79,212,0.08);
+  --teal: #1a9e6e;
+  --teal-bg: rgba(26,158,110,0.08);
+  --amber: #b86e10;
+  --amber-bg: rgba(184,110,16,0.08);
+  --red: #c04040;
+  --red-bg: rgba(192,64,64,0.08);
+  --blue: #2a80b8;
+  --blue-bg: rgba(42,128,184,0.08);
+  --fb: #1877F2;
+  --tw: #1DA1F2;
+  --ig: #E1306C;
+  --tk: #010101;
+  --li: #0A66C2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex; align-items: center; gap: 0;
+  height: 52px;
+}
+.nav-brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  color: var(--accent); text-transform: uppercase;
+  margin-right: auto;
+}
+.nav-links { display: flex; gap: 0; }
+.nav-link {
+  padding: 0 18px; height: 52px;
+  display: flex; align-items: center;
+  font-size: 12px; color: var(--text2);
+  cursor: pointer; border-bottom: 2px solid transparent;
+  transition: all 0.2s; text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--text); border-bottom-color: var(--accent);
+}
+
+/* SECTIONS */
+.section { display: none; padding: 40px 32px 60px; max-width: 1200px; margin: 0 auto; }
+.section.active { display: block; }
+
+/* HERO */
+.hero {
+  padding: 60px 32px 0;
+  max-width: 1200px; margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.hero-title span { color: var(--accent); }
+.hero-sub {
+  font-size: 14px; color: var(--text2);
+  margin-bottom: 48px;
+  letter-spacing: 0.02em;
+}
+.hero-meta {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding: 20px 0; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta-label { font-size: 10px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-meta-value { font-size: 13px; color: var(--text2); font-family: 'IBM Plex Mono', monospace; }
+
+/* SCORE CARDS */
+.score-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 40px;
+}
+.score-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 24px 20px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.score-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+}
+.score-card.purple::before { background: var(--purple); }
+.score-card.teal::before { background: var(--teal); }
+.score-card.amber::before { background: var(--amber); }
+.score-card:hover { border-color: var(--border2); }
+.score-label { font-size: 10px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+.score-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.score-card.purple .score-num { color: var(--purple); }
+.score-card.teal .score-num { color: var(--teal); }
+.score-card.amber .score-num { color: var(--amber); }
+.score-desc { font-size: 12px; color: var(--text2); }
+.score-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+.score-card.purple .score-fill { background: var(--purple); }
+.score-card.teal .score-fill { background: var(--teal); }
+.score-card.amber .score-fill { background: var(--amber); }
+
+/* SECTION HEADERS */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--text); margin-bottom: 6px;
+}
+.section-sub { font-size: 13px; color: var(--text2); margin-bottom: 32px; }
+
+/* DATA TABLES */
+.data-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+.data-table th {
+  font-size: 10px; color: var(--text3);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 8px 16px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.data-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--bg3); }
+
+/* BADGES */
+.badge {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 2px; font-size: 10px;
+  font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.badge-green { background: #d4f0e4; color: #0d6e45; }
+.badge-amber { background: #fde8c8; color: #8a4f08; }
+.badge-red { background: #fce0e0; color: #922020; }
+.badge-blue { background: #d4eaf8; color: #1a5c8a; }
+.badge-purple { background: #e2dff8; color: #3a2fb0; }
+
+/* CHART WRAPPER */
+.chart-wrap {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 2px; padding: 24px;
+  margin-bottom: 24px;
+}
+.chart-title { font-size: 12px; color: var(--text2); margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* GRID LAYOUTS */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+
+/* METRIC CARDS */
+.metric {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 2px; padding: 20px;
+}
+.metric-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; color: var(--text);
+  line-height: 1; margin-bottom: 4px;
+}
+.metric-val.red { color: var(--red); }
+.metric-val.teal { color: var(--teal); }
+.metric-val.amber { color: var(--amber); }
+.metric-val.purple { color: var(--purple); }
+.metric-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; }
+.metric-note { font-size: 11px; color: var(--text2); margin-top: 4px; }
+
+/* SOCIAL CARDS */
+.social-platform {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 2px; padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.social-platform:hover { border-color: var(--border2); }
+.platform-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.platform-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.platform-name { font-weight: 600; font-size: 15px; }
+.platform-handle { font-size: 11px; color: var(--text3); font-family: 'IBM Plex Mono', monospace; }
+.platform-score-badge {
+  margin-left: auto; font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+}
+.platform-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.pstat { text-align: center; }
+.pstat-val { font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 500; color: var(--text); }
+.pstat-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+.insight-list { list-style: none; }
+.insight-list li {
+  padding: 7px 0; border-bottom: 1px solid var(--border);
+  font-size: 12px; color: var(--text2);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.insight-list li:last-child { border-bottom: none; }
+.insight-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.dot-green { background: var(--teal); }
+.dot-amber { background: var(--amber); }
+.dot-red { background: var(--red); }
+
+/* ACTION CARDS */
+.action-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 2px; padding: 20px;
+  border-left: 3px solid;
+}
+.action-card.priority-1 { border-left-color: var(--red); }
+.action-card.priority-2 { border-left-color: var(--amber); }
+.action-card.priority-3 { border-left-color: var(--teal); }
+.action-priority { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.action-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+.action-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.action-tag { display: inline-block; margin-top: 8px; font-size: 10px; color: var(--text3); font-family: 'IBM Plex Mono', monospace; }
+
+/* VERDICT BOX */
+.verdict {
+  background: #faf9f6; border: 1px solid var(--border2);
+  border-radius: 2px; padding: 28px 32px;
+  margin-top: 32px;
+  position: relative;
+}
+.verdict::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--amber), var(--red));
+}
+.verdict-label { font-size: 10px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+.verdict-text { font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.5; color: var(--text); }
+
+/* COMPARISON BAR */
+.compare-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.compare-label { font-size: 12px; color: var(--text2); width: 180px; flex-shrink: 0; }
+.compare-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.compare-fill { height: 100%; border-radius: 3px; }
+.compare-val { font-size: 12px; color: var(--text); font-family: 'IBM Plex Mono', monospace; width: 44px; text-align: right; flex-shrink: 0; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 7px; top: 6px; bottom: 6px; width: 1px;
+  background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-dot {
+  position: absolute; left: -20px; top: 4px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--bg); border: 1.5px solid var(--accent);
+}
+.timeline-date { font-size: 10px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; margin-bottom: 3px; }
+.timeline-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.timeline-desc { font-size: 12px; color: var(--text2); }
+
+/* FOOTER */
+.footer {
+  padding: 24px 32px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 60px;
+}
+.footer-left { font-size: 11px; color: var(--text3); }
+.footer-right { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text3); }
+
+/* TABS */
+.tab-nav { display: flex; gap: 0; margin-bottom: 28px; border-bottom: 1px solid var(--border); }
+.tab-btn {
+  padding: 10px 20px; font-size: 12px; color: var(--text2);
+  cursor: pointer; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: all 0.2s; letter-spacing: 0.04em;
+  background: none; border-top: none; border-left: none; border-right: none;
+}
+.tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .score-grid, .two-col, .three-col { grid-template-columns: 1fr; }
+  nav { padding: 0 16px; }
+  .section, .hero { padding-left: 16px; padding-right: 16px; }
+  .platform-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section.active > * { animation: fadeUp 0.4s ease both; }
+.section.active > *:nth-child(2) { animation-delay: 0.05s; }
+.section.active > *:nth-child(3) { animation-delay: 0.1s; }
+.section.active > *:nth-child(4) { animation-delay: 0.15s; }
+.section.active > *:nth-child(5) { animation-delay: 0.2s; }
+
+.noise-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+.content-wrap { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<div class="noise-bg"></div>
+<div class="content-wrap">
+
+<nav>
+  <div class="nav-brand">Diagnostic Présidentiel · BDF</div>
+  <div class="nav-links">
+    <a class="nav-link active" onclick="showSection('overview')">Vue d'ensemble</a>
+    <a class="nav-link" onclick="showSection('arenas')">3 Arènes</a>
+    <a class="nav-link" onclick="showSection('social')">Réseaux sociaux BDF</a>
+    <a class="nav-link" onclick="showSection('presidence')">Pages Présidence</a>
+  </div>
+</nav>
+
+<!-- HERO (always visible) -->
+<div class="hero" id="hero-block">
+  <div class="hero-eyebrow">Rapport stratégique de communication · Avril 2026</div>
+  <h1 class="hero-title">Bassirou Diomaye Faye<br>dans les <span>3 arènes</span> du pouvoir</h1>
+  <p class="hero-sub">Diagnostic factuel de présence institutionnelle, médiatique et culturelle · Sénégal 2024–2026</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="hero-meta-label">Période analysée</span><span class="hero-meta-value">Avr. 2024 → Avr. 2026</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Président depuis</span><span class="hero-meta-value">2 avril 2024</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Score global</span><span class="hero-meta-value" style="color:var(--accent);">53 / 100</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Verdict</span><span class="hero-meta-value" style="color:var(--amber);">Asymétrique · Vulnérable</span></div>
+    <div class="hero-meta-item"><span class="hero-meta-label">Sources</span><span class="hero-meta-value">presidence.sn, France24, RSF, X, Seneweb…</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<section class="section active" id="overview">
+  <div class="score-grid">
+    <div class="score-card purple">
+      <div class="score-label">Arène institutionnelle</div>
+      <div class="score-num">72</div>
+      <div class="score-desc">Forte production normative · Actes souverains</div>
+      <div class="score-bar"><div class="score-fill" style="width:72%"></div></div>
+    </div>
+    <div class="score-card teal">
+      <div class="score-label">Arène médiatique</div>
+      <div class="score-num">55</div>
+      <div class="score-desc">Présent mais passif · Récit en glissement</div>
+      <div class="score-bar"><div class="score-fill" style="width:55%"></div></div>
+    </div>
+    <div class="score-card amber">
+      <div class="score-label">Arène culturelle</div>
+      <div class="score-num">31</div>
+      <div class="score-desc">Zone de vulnérabilité critique · Vide narratif</div>
+      <div class="score-bar"><div class="score-fill" style="width:31%"></div></div>
+    </div>
+  </div>
+
+  <!-- 3 RADARS SPÉCIFIQUES -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+    <div class="chart-wrap" style="margin-bottom:0;">
+      <div class="chart-title" style="color:var(--purple);">① Arène institutionnelle · 72/100</div>
+      <div style="position:relative;height:250px;"><canvas id="radarInstitut"></canvas></div>
+    </div>
+    <div class="chart-wrap" style="margin-bottom:0;">
+      <div class="chart-title" style="color:var(--teal);">② Arène médiatique · 55/100</div>
+      <div style="position:relative;height:250px;"><canvas id="radarMedia"></canvas></div>
+    </div>
+    <div class="chart-wrap" style="margin-bottom:0;">
+      <div class="chart-title" style="color:var(--amber);">③ Arène culturelle · 31/100</div>
+      <div style="position:relative;height:250px;"><canvas id="radarCulture"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Évolution du récit dominant (presse intl.)</div>
+    <div style="position:relative;height:240px;"><canvas id="narrativeChart"></canvas></div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Diagnostic synthétique</div>
+    <div class="verdict-text">"Diomaye Faye gouverne fort, communique peu, et n'existe presque pas culturellement. Il produit des actes, mais ne produit pas de récit. Dans une démocratie connectée, ce déséquilibre coûte de la légitimité — même quand les décisions sont bonnes."</div>
+  </div>
+</section>
+
+<!-- ═══════════════ ARÈNES ═══════════════ -->
+<section class="section" id="arenas">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('arena1', this)">① Institutionnelle</button>
+    <button class="tab-btn" onclick="showTab('arena2', this)">② Médiatique</button>
+    <button class="tab-btn" onclick="showTab('arena3', this)">③ Culturelle</button>
+  </div>
+
+  <!-- ARENA 1 -->
+  <div class="tab-content active" id="arena1">
+    <div class="section-title">Arène institutionnelle</div>
+    <div class="section-sub">Score 72/100 · Terrain maîtrisé · Actes de gouvernance documentés</div>
+
+    <div class="two-col" style="margin-bottom:28px;">
+      <div class="chart-wrap" style="margin-bottom:0;">
+        <div class="chart-title" style="color:var(--purple);">Radar des 5 critères de scoring · Institutionnel</div>
+        <div style="position:relative;height:280px;"><canvas id="radarInstitutDetail"></canvas></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Production normative</span>
+            <span style="font-size:13px;font-weight:600;color:var(--purple);">22/25</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">1431+ décrets · 4 projets de loi · Assises de la Justice</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Actes souverains symboliques</span>
+            <span style="font-size:13px;font-weight:600;color:var(--purple);">17/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:85%;height:100%;background:var(--purple);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Dissolution AN · Retrait bases FR · Diplomatie africaine</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Légitimité régionale/intl.</span>
+            <span style="font-size:13px;font-weight:600;color:var(--purple);">16/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:80%;height:100%;background:var(--purple);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Médiateur CEDEAO · Validation FMI · ONU · Présidence Commission</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Cohérence programme/actes</span>
+            <span style="font-size:13px;font-weight:600;color:var(--amber);">13/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:65%;height:100%;background:var(--amber);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Souveraineté OK · Bilan socio-éco en demi-teinte</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Stabilité de l'exécutif</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">4/15</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:27%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Fracture Diomaye–Sonko · Tensions Pastef · Nov. 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="metric"><div class="metric-val purple">5</div><div class="metric-label">Discours à la Nation</div><div class="metric-note">Avr. 2024 – Déc. 2025</div></div>
+      <div class="metric"><div class="metric-val purple">1431+</div><div class="metric-label">Décrets signés</div><div class="metric-note">Numérotation sept. 2025</div></div>
+      <div class="metric"><div class="metric-val purple">4</div><div class="metric-label">Projets de loi transparence</div><div class="metric-note">Soumis T1 2026</div></div>
+      <div class="metric"><div class="metric-val purple">9</div><div class="metric-label">Pays africains visités</div><div class="metric-note">Avant Paris (juin 2024)</div></div>
+      <div class="metric"><div class="metric-val teal">342,5</div><div class="metric-label">Mds FCFA économisés</div><div class="metric-note">Pour les ménages (2025)</div></div>
+      <div class="metric"><div class="metric-val teal">FMI</div><div class="metric-label">Validation Livre blanc</div><div class="metric-note">Dette cachée confirmée</div></div>
+    </div>
+    <h3 style="font-size:13px;color:var(--text2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Chronologie des actes majeurs</h3>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Avr. 2024</div><div class="timeline-title">Investiture + 1er discours souveraniste</div><div class="timeline-desc">9 pays africains avant Paris. Rupture diplomatique assumée avec la France.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Juil. 2024</div><div class="timeline-title">Nommé médiateur CEDEAO</div><div class="timeline-desc">Arbitre dans le conflit entre États membres et pays du Sahel.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Sept. 2024</div><div class="timeline-title">Dissolution de l'Assemblée nationale</div><div class="timeline-desc">Acte constitutionnel fort. Nouvelles législatives du 17 novembre 2024.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Oct. 2025</div><div class="timeline-title">Livre blanc sur la dette — Validation FMI</div><div class="timeline-desc">Reconnaissance internationale de la dette cachée héritée du régime précédent.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Sept. 2025</div><div class="timeline-title">Décret 2025-1431 — Réorganisation de l'État</div><div class="timeline-desc">Concentration des régulateurs stratégiques sous autorité présidentielle directe.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Déc. 2025</div><div class="timeline-title">Présidence Commission CEDEAO</div><div class="timeline-desc">Leadership régional reconnu. 2026 placée sous signe de la relance économique.</div></div>
+    </div>
+  </div>
+
+  <!-- ARENA 2 -->
+  <div class="tab-content" id="arena2">
+    <div class="section-title">Arène médiatique</div>
+    <div class="section-sub">Score 55/100 · Volume élevé, récit subi · Conférences de presse quasi inexistantes</div>
+
+    <div class="two-col" style="margin-bottom:28px;">
+      <div class="chart-wrap" style="margin-bottom:0;">
+        <div class="chart-title" style="color:var(--teal);">Radar des 5 critères de scoring · Médiatique</div>
+        <div style="position:relative;height:280px;"><canvas id="radarMediaDetail"></canvas></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Volume de couverture</span>
+            <span style="font-size:13px;font-weight:600;color:var(--teal);">17/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:85%;height:100%;background:var(--teal);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Forte présence France24, RFI, JA, presse nationale quotidienne</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Maîtrise du récit</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">10/25</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:40%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Glissement "rupture" → "bilan mitigé" non contre-cadré</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Initiatives médiatiques propres</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">4/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:20%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Quasi aucune conf. de presse · 1 interview France24 en 2 ans</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Gestion des crises de presse</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">7/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:35%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Crise Sonko non gérée · Convocations journalistes (RSF)</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Image internationale</span>
+            <span style="font-size:13px;font-weight:600;color:var(--teal);">12/15</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:80%;height:100%;background:var(--teal);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Diplomatie panafricaine reconnue · Validation FMI · Résonance ONU</div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Couverture médiatique par type (estimation relative)</div>
+      <div style="position:relative;height:220px;"><canvas id="mediaChart"></canvas></div>
+    </div>
+    <h3 style="font-size:13px;color:var(--text2);text-transform:uppercase;letter-spacing:0.1em;margin:24px 0 16px;">Indicateurs de présence médiatique</h3>
+    <div class="compare-row"><div class="compare-label">Presse nationale (volume)</div><div class="compare-bar"><div class="compare-fill" style="width:85%;background:var(--teal);"></div></div><div class="compare-val">Élevé</div></div>
+    <div class="compare-row"><div class="compare-label">Couverture internationale</div><div class="compare-bar"><div class="compare-fill" style="width:72%;background:var(--teal);"></div></div><div class="compare-val">Forte</div></div>
+    <div class="compare-row"><div class="compare-label">Conférences de presse initiées</div><div class="compare-bar"><div class="compare-fill" style="width:12%;background:var(--red);"></div></div><div class="compare-val">Rare</div></div>
+    <div class="compare-row"><div class="compare-label">Maîtrise du récit dominant</div><div class="compare-bar"><div class="compare-fill" style="width:38%;background:var(--amber);"></div></div><div class="compare-val">Partielle</div></div>
+    <div class="compare-row"><div class="compare-label">Interviews télévisées planifiées</div><div class="compare-bar"><div class="compare-fill" style="width:18%;background:var(--red);"></div></div><div class="compare-val">Rare</div></div>
+    <div class="compare-row"><div class="compare-label">Liberté de la presse (RSF signal)</div><div class="compare-bar"><div class="compare-fill" style="width:45%;background:var(--amber);"></div></div><div class="compare-val">Mixte</div></div>
+    <br>
+    <table class="data-table">
+      <thead><tr><th>Événement</th><th>Date</th><th>Impact</th><th>Évaluation</th></tr></thead>
+      <tbody>
+        <tr><td>Entretien exclusif France 24 (ONU)</td><td>Sept. 2025</td><td>International</td><td><span class="badge badge-green">Positif</span></td></tr>
+        <tr><td>Validation FMI Livre blanc / couverture presse</td><td>Oct. 2025</td><td>National + Intl.</td><td><span class="badge badge-green">Fort</span></td></tr>
+        <tr><td>Convocations journalistes (BAG)</td><td>Fév. 2025</td><td>RSF + presse locale</td><td><span class="badge badge-red">Négatif</span></td></tr>
+        <tr><td>Récit "rupture" → "bilan mitigé"</td><td>Mars 2025</td><td>Presse intl.</td><td><span class="badge badge-amber">Glissement</span></td></tr>
+        <tr><td>Crise Diomaye–Sonko / récit rupture tandem</td><td>Nov. 2025</td><td>National + régional</td><td><span class="badge badge-red">Très négatif</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ARENA 3 -->
+  <div class="tab-content" id="arena3">
+    <div class="section-title">Arène culturelle</div>
+    <div class="section-sub">Score 31/100 · Zone rouge · Popularité culturelle sous-traitée à Sonko depuis le départ</div>
+
+    <div class="two-col" style="margin-bottom:28px;">
+      <div class="chart-wrap" style="margin-bottom:0;">
+        <div class="chart-title" style="color:var(--amber);">Radar des 5 critères de scoring · Culturel</div>
+        <div style="position:relative;height:280px;"><canvas id="radarCultureDetail"></canvas></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Capital culturel propre</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">4/25</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:16%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">"Diomaye mooy Sonko" — identité empruntée, aucun symbole propre</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Présence conversations populaires</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">6/25</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:24%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Mentions organiques dominées par la critique et la comparaison à Sonko</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Maîtrise plateformes culturelles</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">3/20</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:15%;height:100%;background:var(--red);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Absent TikTok · Instagram personnel inexistant · Aucun Reels</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Gestion communauté digitale</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">8/15</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:53%;height:100%;background:var(--amber);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">327K sur X mais base appartenant à Pastef/Sonko, pas à lui</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:500;">Résilience aux crises culturelles</span>
+            <span style="font-size:13px;font-weight:600;color:var(--red);">10/15</span>
+          </div>
+          <div style="height:4px;background:var(--border);border-radius:2px;"><div style="width:67%;height:100%;background:var(--amber);border-radius:2px;"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px;">Tenue Ziguinchor, désabonnements massifs — buzz non retournés</div>
+        </div>
+      </div>
+    </div>
+    <div class="three-col">
+      <div class="metric"><div class="metric-val amber">327K</div><div class="metric-label">Abonnés X (@PR_Diomaye)</div></div>
+      <div class="metric"><div class="metric-val red">−40K</div><div class="metric-label">Perte FB en 48h</div><div class="metric-note">Nov. 2025 · Crise Patriotes</div></div>
+      <div class="metric"><div class="metric-val red">~0</div><div class="metric-label">Mème viral à son avantage</div><div class="metric-note">Aucun documenté en 2025</div></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Dynamique culturelle : Capital propre vs Capital emprunté (Sonko)</div>
+      <div style="position:relative;height:220px;"><canvas id="culturalChart"></canvas></div>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Signal culturel</th><th>Type</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>"Diomaye mooy Sonko" — slogan viral élection 2024</td><td>Capital emprunté</td><td><span class="badge badge-amber">Dépendance</span></td></tr>
+        <tr><td>Désabonnement massif organisé par Patriotes</td><td>Arme retournée</td><td><span class="badge badge-red">Danger</span></td></tr>
+        <tr><td>Controverse vestimentaire à Ziguinchor</td><td>Buzz non maîtrisé</td><td><span class="badge badge-amber">Passif</span></td></tr>
+        <tr><td>Absence de storytelling présidentiel propre</td><td>Vide narratif</td><td><span class="badge badge-red">Critique</span></td></tr>
+        <tr><td>Rencontre influenceurs Patriotes (avr. 2026)</td><td>Tentative de rattrapage</td><td><span class="badge badge-amber">Tardif</span></td></tr>
+        <tr><td>Fondation Sénégal Solidaire — tensions internes</td><td>Levier potentiel</td><td><span class="badge badge-amber">À construire</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ SOCIAL MEDIA ═══════════════ -->
+<section class="section" id="social">
+  <div class="section-title">Analyse des réseaux sociaux</div>
+  <div class="section-sub">Diagnostic complet par plateforme · Présence, engagement, vulnérabilités et recommandations</div>
+
+  <!-- OVERVIEW CHART -->
+  <div class="chart-wrap" style="margin-bottom:32px;">
+    <div class="chart-title">Poids relatif par plateforme — audience estimée Sénégal (population digitale)</div>
+    <div style="position:relative;height:240px;"><canvas id="socialOverview"></canvas></div>
+  </div>
+
+  <!-- FACEBOOK -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#1877F2;color:white;">f</div>
+      <div>
+        <div class="platform-name">Facebook</div>
+        <div class="platform-handle">BDFofficiel · page officielle</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--amber);">42<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:#1877F2;">~560K</div><div class="pstat-label">Abonnés actuels</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--red);">−40K</div><div class="pstat-label">Perte en 48h (nov.25)</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">74%</div><div class="pstat-label">Part du trafic institutionnel sénégalais</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">Faible</div><div class="pstat-label">Taux d'engagement moyen</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-amber"></span>Facebook reste la plateforme n°1 au Sénégal pour la conversation politique — pourtant la page présidentielle y est gérée en mode bulletin officiel.</li>
+      <li><span class="insight-dot dot-red"></span>La page est passée de 604 000 à 558 000 abonnés en novembre 2025 suite à la crise avec les Patriotes — une chute de 7,6% en 72h.</li>
+      <li><span class="insight-dot dot-red"></span>Des allégations de comptes fictifs pour booster artificiellement le compteur ont circulé dans la presse sénégalaise, fragilisant la crédibilité des chiffres.</li>
+      <li><span class="insight-dot dot-amber"></span>Contenu dominant : communiqués de presse, photos officielles, agenda. Zéro format natif engageant (vidéo courte, sondage, live).</li>
+      <li><span class="insight-dot dot-green"></span>Volume de commentaires important : la page génère des débats actifs, mais sans réponse de la présidence = amplification du négatif sans contre-récit.</li>
+    </ul>
+  </div>
+
+  <!-- X / TWITTER -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#000;color:white;font-size:14px;">𝕏</div>
+      <div>
+        <div class="platform-name">X (Twitter)</div>
+        <div class="platform-handle">@PR_Diomaye · compte actif</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--teal);">58<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--text);">327K</div><div class="pstat-label">Abonnés</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">Régulier</div><div class="pstat-label">Fréquence de post</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Variable</div><div class="pstat-label">Taux engagement</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">Institutionnel</div><div class="pstat-label">Ton dominant</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>Plateforme la mieux gérée : posts réguliers, présence lors des événements diplomatiques (ONU, Trump, CEDEAO), réactions à l'actualité nationale.</li>
+      <li><span class="insight-dot dot-green"></span>Post CAN 2025 (félicitations Lions) : 209K vues, 7,1K likes → preuve que le contenu populaire génère de l'engagement massif quand il y a de l'émotion.</li>
+      <li><span class="insight-dot dot-amber"></span>Ton systématiquement protocolaire. Aucun post en wolof documenté. Aucune prise de position directe et personnelle sur des sujets du quotidien.</li>
+      <li><span class="insight-dot dot-amber"></span>327K abonnés : correct pour un chef d'État africain, mais très loin des 2M+ de Macky Sall ou des millions de Kagame (sur X).</li>
+      <li><span class="insight-dot dot-red"></span>La conversation autour de @PR_Diomaye est dominée par les sujets que les médias imposent, pas par ceux que la présidence initie.</li>
+    </ul>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:12px;">▶</div>
+      <div>
+        <div class="platform-name">Instagram</div>
+        <div class="platform-handle">Présence officielle limitée</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--red);">22<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--red);">Faible</div><div class="pstat-label">Présence documentée</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--red);">Rare</div><div class="pstat-label">Fréquence de post</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">16-35 ans</div><div class="pstat-label">Audience cible Instagram</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--red);">Absent</div><div class="pstat-label">Stratégie visuelle</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-red"></span>Aucune stratégie visuelle documentée. Instagram est pourtant la plateforme où la présidence sénégalaise pourrait construire une identité visuelle forte et aspirationnelle.</li>
+      <li><span class="insight-dot dot-red"></span>La jeunesse sénégalaise (25-35 ans) — base de soutien de Pastef — est massivement présente sur Instagram. C'est un angle mort stratégique majeur.</li>
+      <li><span class="insight-dot dot-amber"></span>Le format Reels/Stories permettrait de montrer l'humain derrière le président : visites de terrain, échanges citoyens, coulisses de gouvernance.</li>
+      <li><span class="insight-dot dot-amber"></span>Les images officielles (presidence.sn) sont de bonne qualité mais ne sont pas optimisées pour Instagram — formats, ratios, narration visuelle.</li>
+      <li><span class="insight-dot dot-red"></span>Opportunité manquée : Instagram est la plateforme à plus fort taux d'engagement pour les leaders politiques africains qui l'investissent correctement.</li>
+    </ul>
+  </div>
+
+  <!-- TIKTOK -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#010101;color:white;font-size:11px;border:1px solid #333;">♪</div>
+      <div>
+        <div class="platform-name">TikTok</div>
+        <div class="platform-handle">Absence totale confirmée</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--red);">08<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--red);">Absent</div><div class="pstat-label">Compte officiel</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Actif</div><div class="pstat-label">Contenu tiers sur lui</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">1,99 Md</div><div class="pstat-label">Utilisateurs mondiaux</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">+35%</div><div class="pstat-label">Hausse engagement 2024-25</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-red"></span>Aucun compte officiel. La présence de Diomaye Faye sur TikTok est uniquement constituée de contenu tiers — découpes vidéo, commentaires, parodies — qu'il ne contrôle pas.</li>
+      <li><span class="insight-dot dot-red"></span>TikTok est la plateforme à la plus forte croissance d'engagement en Afrique de l'Ouest. La jeunesse sénégalaise y est surreprésentée. C'est l'arène culturelle la plus sous-exploitée.</li>
+      <li><span class="insight-dot dot-amber"></span>Sonko, en revanche, génère du contenu TikTok organique via ses partisans — ce qui alimente encore la disparité de popularité culturelle entre les deux hommes.</li>
+      <li><span class="insight-dot dot-amber"></span>Le format TikTok est le plus efficace pour humaniser un leader : 30-60 secondes de terrain, de contact direct, de langue populaire. Coût de production minimal.</li>
+      <li><span class="insight-dot dot-red"></span>Risque : sans compte officiel, n'importe quel extrait peut être découpé, sorti de contexte et diffusé massivement. Il subit le TikTok de la rue, il ne le fabrique pas.</li>
+    </ul>
+  </div>
+
+  <!-- LINKEDIN -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#0A66C2;color:white;font-size:12px;font-weight:700;">in</div>
+      <div>
+        <div class="platform-name">LinkedIn</div>
+        <div class="platform-handle">Présence diplomatique et économique</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--amber);">45<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--blue);">Modérée</div><div class="pstat-label">Présence</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Intermittent</div><div class="pstat-label">Fréquence</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">Diaspora + Élites</div><div class="pstat-label">Audience principale</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">6.1%</div><div class="pstat-label">Taux eng. médian LinkedIn 2025</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>LinkedIn est la plateforme la plus adaptée à la communication diplomatique et économique — exactement là où Faye a ses forces (réformes, FMI, CEDEAO, NewDeal Technologique).</li>
+      <li><span class="insight-dot dot-amber"></span>La présence est documentée mais sans stratégie de contenu claire. Les publications sont des reprises de communiqués officiels, pas des prises de position éditoriales.</li>
+      <li><span class="insight-dot dot-amber"></span>La diaspora sénégalaise — acteur économique clé — est sur LinkedIn. Elle lit les récits présidentiels sur cette plateforme et les amplifie internationalement.</li>
+      <li><span class="insight-dot dot-green"></span>Opportunité forte : le lancement du NewDeal Technologique (fév. 2025) aurait dû générer une campagne LinkedIn soutenue. Elle n'a pas eu lieu.</li>
+      <li><span class="insight-dot dot-amber"></span>LinkedIn est aussi le lieu où les investisseurs étrangers se forgent une opinion sur le leadership sénégalais. Un contenu éditorial régulier y renforcerait le capital économique du président.</li>
+    </ul>
+  </div>
+
+  <!-- SOCIAL RADAR CHART -->
+  <div class="chart-wrap" style="margin-top:32px;">
+    <div class="chart-title">Score de maturité digitale par plateforme (0 = absent, 100 = maîtrisé)</div>
+    <div style="position:relative;height:280px;"><canvas id="socialRadar"></canvas></div>
+  </div>
+</section>
+
+<!-- ═══════════════ PAGES PRÉSIDENCE ═══════════════ -->
+<section class="section" id="presidence">
+  <div class="section-title">Pages officielles de la Présidence</div>
+  <div class="section-sub">Analyse des comptes institutionnels @PR_Senegal · Distinct des comptes personnels du Président · Avril 2026</div>
+
+  <!-- VUE GLOBALE -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:2px;padding:18px 20px;margin-bottom:24px;">
+    <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:14px;">Distinction clé : 2 écosystèmes digitaux séparés</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:var(--bg);border:1px solid var(--border2);border-radius:2px;padding:14px 16px;border-left:3px solid var(--purple);">
+        <div style="font-size:11px;font-weight:600;color:var(--purple);margin-bottom:6px;">COMPTES PERSONNELS DU PRÉSIDENT</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6;">@PR_Diomaye (X) · BDFofficiel (Facebook) · Pages personnelles<br>→ Analysés dans l'onglet "Réseaux sociaux BDF"</div>
+      </div>
+      <div style="background:var(--bg);border:1px solid var(--border2);border-radius:2px;padding:14px 16px;border-left:3px solid var(--teal);">
+        <div style="font-size:11px;font-weight:600;color:var(--teal);margin-bottom:6px;">PAGES INSTITUTIONNELLES DE LA PRÉSIDENCE</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6;">@PR_Senegal (X · Instagram) · PresidenceSenegal (FB) · presidence.sn<br>→ Analysées dans cet onglet</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÉTRIQUES GLOBALES -->
+  <div class="three-col" style="margin-bottom:28px;">
+    <div class="metric"><div class="metric-val teal">857K</div><div class="metric-label">Likes Facebook Présidence</div><div class="metric-note">PresidenceSenegal · page la plus suivie</div></div>
+    <div class="metric"><div class="metric-val teal">293K</div><div class="metric-label">Abonnés Instagram</div><div class="metric-note">@pr_senegal · 2 164 publications</div></div>
+    <div class="metric"><div class="metric-val amber">28K</div><div class="metric-label">Visites/mois presidence.sn</div><div class="metric-note">Janvier 2025 · +26K vs mois précédent</div></div>
+    <div class="metric"><div class="metric-val purple">352K</div><div class="metric-label">"Talking about" Facebook</div><div class="metric-note">Engagement conversationnel élevé</div></div>
+    <div class="metric"><div class="metric-val purple">6 022</div><div class="metric-label">Posts X @PR_Senegal</div><div class="metric-note">Compte actif depuis 2015</div></div>
+    <div class="metric"><div class="metric-val amber">71,6%</div><div class="metric-label">Trafic presidence.sn depuis Sénégal</div><div class="metric-note">Audience domestique dominante</div></div>
+  </div>
+
+  <!-- GRAPHIQUE COMPARATIF -->
+  <div class="two-col" style="margin-bottom:24px;">
+    <div class="chart-wrap">
+      <div class="chart-title">Audience par plateforme institutionnelle (K abonnés)</div>
+      <div style="position:relative;height:240px;"><canvas id="presChartAudience"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Score de performance éditoriale par plateforme (/100)</div>
+      <div style="position:relative;height:240px;"><canvas id="presChartScore"></canvas></div>
+    </div>
+  </div>
+
+  <!-- FACEBOOK PRÉSIDENCE -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#1877F2;color:white;font-weight:700;">f</div>
+      <div>
+        <div class="platform-name">Facebook — Présidence de la République</div>
+        <div class="platform-handle">facebook.com/PresidenceSenegal · Page institutionnelle officielle</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--teal);">68<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:#1877F2;">857K</div><div class="pstat-label">Likes page</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">352K</div><div class="pstat-label">Personnes parlent de ça</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Quotidien</div><div class="pstat-label">Fréquence publication</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">Officiel</div><div class="pstat-label">Ton éditorial</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>C'est la page la plus suivie des comptes institutionnels présidentiels — 857K likes font d'elle la vitrine numérique principale de la République auprès des Sénégalais.</li>
+      <li><span class="insight-dot dot-green"></span>Le ratio "talking about" (352K) est exceptionnellement élevé par rapport aux likes totaux (~41%) — signe d'un fort engagement conversationnel, même si une partie est critique.</li>
+      <li><span class="insight-dot dot-amber"></span>La page publie quotidiennement : discours, communiqués du Conseil des ministres, photos officielles, agenda du Président. Volume solide mais format 100% descendant.</li>
+      <li><span class="insight-dot dot-amber"></span>Aucune interaction directe avec les commentaires citoyens. La page émet, elle ne dialogue pas. Les commentaires négatifs s'accumulent sans contre-récit visible.</li>
+      <li><span class="insight-dot dot-red"></span>La page est régulièrement utilisée comme caisse de résonance pour des tensions politiques (désabonnements, commentaires hostiles) sans stratégie de modération apparente.</li>
+      <li><span class="insight-dot dot-amber"></span>Contenu visuel de bonne facture (photos de presse officielles) mais peu de vidéos natives et aucun format Stories ou Reels exploité.</li>
+    </ul>
+  </div>
+
+  <!-- X PRÉSIDENCE -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#000;color:white;font-size:13px;">𝕏</div>
+      <div>
+        <div class="platform-name">X (Twitter) — @PR_Senegal</div>
+        <div class="platform-handle">x.com/PR_Senegal · Compte institutionnel officiel · 6 022 posts</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--teal);">72<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--text);">Actif</div><div class="pstat-label">Statut</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">6 022</div><div class="pstat-label">Publications totales</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">Quotidien</div><div class="pstat-label">Fréquence</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Narratif</div><div class="pstat-label">Style distinctif</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>@PR_Senegal est le compte institutionnel le mieux géré du dispositif présidentiel. Il publie des "séquences narratives" — ex : résumés hebdomadaires des actions du Président — qui vont au-delà du simple communiqué.</li>
+      <li><span class="insight-dot dot-green"></span>Format éditorial intéressant : des fils (threads) explicatifs sur les décisions du Conseil des ministres ("Comprendre l'État : comment une décision devient politique publique ?") — rare pour une institution africaine.</li>
+      <li><span class="insight-dot dot-green"></span>Relaie systématiquement les déplacements présidentiels avec contexte stratégique (ex : visite base aérienne Tambacounda + explication du "Pivot Est" sécuritaire) — pédagogie de gouvernance.</li>
+      <li><span class="insight-dot dot-amber"></span>Complémentarité assumée avec @PR_Diomaye mais hiérarchie de visibilité floue pour l'audience : les citoyens ne distinguent pas toujours les deux comptes.</li>
+      <li><span class="insight-dot dot-amber"></span>Le ton reste institutionnel et technique. Peu d'émotion, peu de proximité. La pédagogie est bonne mais l'engagement émotionnel est faible.</li>
+      <li><span class="insight-dot dot-red"></span>Pas d'interactions avec d'autres comptes (journalistes, institutions partenaires, citoyens). Le compte émetteur ne devient jamais acteur de conversation.</li>
+    </ul>
+  </div>
+
+  <!-- INSTAGRAM PRÉSIDENCE -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:11px;">▶</div>
+      <div>
+        <div class="platform-name">Instagram — @pr_senegal</div>
+        <div class="platform-handle">instagram.com/pr_senegal · 293K abonnés · 2 164 publications</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--amber);">61<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:#E1306C;">293K</div><div class="pstat-label">Abonnés</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">2 164</div><div class="pstat-label">Publications</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--text2);">10</div><div class="pstat-label">Abonnements (ratio institutionnel)</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">Visuel</div><div class="pstat-label">Format dominant</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>293K abonnés pour un compte institutionnel gouvernemental en Afrique de l'Ouest est une performance solide — le compte existe et est actif contrairement à beaucoup de présidences africaines.</li>
+      <li><span class="insight-dot dot-green"></span>Le ratio 2 164 publications / 293K abonnés indique une audience acquise progressivement et un contenu régulier — pas un compte fantôme gonflé artificiellement.</li>
+      <li><span class="insight-dot dot-amber"></span>Le contenu est essentiellement photographique (cérémonies officielles, poignées de mains, discours) — visuellement propre mais peu créatif. Aucun Reels narratif documenté.</li>
+      <li><span class="insight-dot dot-amber"></span>Le compte suit seulement 10 personnes/institutions — fermeture totale au dialogue et au networking institutionnel numérique. Signe d'une gestion en silo.</li>
+      <li><span class="insight-dot dot-red"></span>L'opportunité manquée : Instagram est la plateforme où une présidence peut produire du "soft power" visuel fort — beauté des paysages sénégalais, diversité culturelle, portraits citoyens. Cette dimension est absente.</li>
+      <li><span class="insight-dot dot-red"></span>Aucune utilisation documentée des Stories éphémères ni des fonctionnalités interactives (sondages, questions, countdowns sur événements officiels).</li>
+    </ul>
+  </div>
+
+  <!-- SITE WEB presidence.sn -->
+  <div class="social-platform">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:var(--bg3);color:var(--text);font-size:11px;font-weight:700;border:1px solid var(--border2);">.sn</div>
+      <div>
+        <div class="platform-name">presidence.sn — Site officiel</div>
+        <div class="platform-handle">presidence.sn · Hub de contenus institutionnels · 4 langues (FR · EN · WO · AR)</div>
+      </div>
+      <div class="platform-score-badge" style="color:var(--teal);">65<span style="font-size:14px;color:var(--text3);">/100</span></div>
+    </div>
+    <div class="platform-stats">
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">28K</div><div class="pstat-label">Visites/mois (jan. 2025)</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">71,6%</div><div class="pstat-label">Trafic Sénégal</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--amber);">1,5K</div><div class="pstat-label">Mots-clés indexés</div></div>
+      <div class="pstat"><div class="pstat-val" style="color:var(--teal);">4</div><div class="pstat-label">Langues disponibles</div></div>
+    </div>
+    <ul class="insight-list">
+      <li><span class="insight-dot dot-green"></span>Le site est disponible en 4 langues (français, anglais, wolof, arabe) — initiative remarquable et rare pour une présidence africaine. Le wolof en particulier signale une volonté d'ancrage populaire.</li>
+      <li><span class="insight-dot dot-green"></span>Mise à jour régulière : communiqués du Conseil des ministres, agenda présidentiel, discours intégraux, photos et vidéos — base documentaire solide pour la presse et les chercheurs.</li>
+      <li><span class="insight-dot dot-amber"></span>28K visites mensuelles est un chiffre modeste pour le site officiel d'un chef d'État. Cela indique une faible notoriété organique et un SEO sous-optimisé.</li>
+      <li><span class="insight-dot dot-amber"></span>Le site se classe #1 sur "président de la République du Sénégal" mais reste invisible sur les sujets thématiques (économie, réformes, jeunesse) — faible stratégie de contenu éditorial.</li>
+      <li><span class="insight-dot dot-red"></span>Aucune newsletter active documentée malgré un formulaire d'abonnement présent. Le site ne capte pas sa propre audience et ne la fidélise pas.</li>
+      <li><span class="insight-dot dot-amber"></span>15% du trafic provient de France (diaspora) — signal d'une audience internationale attentive qui n'est pas exploitée via du contenu dédié.</li>
+    </ul>
+  </div>
+
+  <!-- BENCHMARK COMPARATIF -->
+  <div class="chart-wrap" style="margin-top:8px;margin-bottom:24px;">
+    <div class="chart-title">Benchmark comparatif — Présidences africaines sur Instagram (abonnés · estimation 2025)</div>
+    <div style="position:relative;height:260px;"><canvas id="benchmarkChart"></canvas></div>
+  </div>
+
+  <!-- SYNTHÈSE ÉCOSYSTÈME -->
+  <h3 style="font-size:13px;color:var(--text2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Synthèse : forces et failles de l'écosystème institutionnel</h3>
+  <table class="data-table">
+    <thead><tr><th>Dimension</th><th>Forces</th><th>Failles</th><th>Urgence</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:500;">Production de contenu</td>
+        <td>Volume quotidien, 4 langues, archives complètes</td>
+        <td>Format 100% descendant, aucun natif créatif</td>
+        <td><span class="badge badge-amber">Moyenne</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">Engagement communautaire</td>
+        <td>352K "talking about" FB = buzz organique réel</td>
+        <td>Zéro réponse aux commentaires, aucun dialogue</td>
+        <td><span class="badge badge-red">Haute</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">Cohérence cross-plateforme</td>
+        <td>Charte visuelle homogène, logos officiels</td>
+        <td>Pas de stratégie unifiée entre comptes perso et instit.</td>
+        <td><span class="badge badge-amber">Moyenne</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">Pédagogie de gouvernance</td>
+        <td>Fils X explicatifs ("Comprendre l'État") innovants</td>
+        <td>Limités à X, pas déclinés sur FB ni Instagram</td>
+        <td><span class="badge badge-amber">Moyenne</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">Formats vidéo</td>
+        <td>Présence sur YouTube (lives des Conseils des ministres)</td>
+        <td>Aucun Reels, aucun TikTok, aucune série documentaire</td>
+        <td><span class="badge badge-red">Haute</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">SEO & visibilité web</td>
+        <td>#1 sur le nom officiel du président</td>
+        <td>28K visites/mois = invisible sur les sujets thématiques</td>
+        <td><span class="badge badge-red">Haute</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="verdict">
+    <div class="verdict-label">Verdict institutionnel digital</div>
+    <div class="verdict-text">"Les pages de la Présidence existent et fonctionnent — c'est déjà mieux que beaucoup de pays africains. Mais elles communiquent comme une administration, pas comme un pouvoir qui cherche à convaincre. Volume sans engagement, présence sans conversation, production sans émotion. L'écosystème est construit pour archiver le pouvoir, pas pour le légitimer."</div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-left">Sources : presidence.sn · France 24 · RSF · Seneweb · SenePlus · Le Soleil · IRIS · Wikipedia · X/@PR_Diomaye · Dakaractu · La Nouvelle Tribune</div>
+  <div class="footer-right">Diagnostic stratégique · Avril 2026 · v1.0</div>
+</div>
+
+</div>
+
+<script>
+// NAV
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  document.getElementById('hero-block').style.display = (id === 'overview') ? '' : 'none';
+  window.scrollTo(0,0);
+}
+
+// TABS
+function showTab(id, btn) {
+  const parent = btn.closest('.section');
+  parent.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const DARK_GRID = 'rgba(0,0,0,0.07)';
+const DARK_TEXT = '#5a5855';
+
+// ── HELPER RADAR OPTIONS ───────────────────────────────────────
+function radarOpts(color, maxVal) {
+  return {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 10 }, boxWidth: 8 } } },
+    scales: { r: {
+      min: 0, max: maxVal || 100,
+      ticks: { display: false },
+      grid: { color: DARK_GRID },
+      angleLines: { color: DARK_GRID },
+      pointLabels: { color: DARK_TEXT, font: { size: 9 } }
+    }}
+  };
+}
+
+// ── OVERVIEW RADAR 1 — INSTITUTIONNEL ──────────────────────────
+new Chart(document.getElementById('radarInstitut'), {
+  type: 'radar',
+  data: {
+    labels: ['Production\nnormative','Actes\nsouverains','Légitimité\nrégionale/intl.','Cohérence\nprogramme','Stabilité\nexécutif'],
+    datasets: [{
+      label: 'Score obtenu',
+      data: [88, 85, 80, 65, 27],
+      backgroundColor: 'rgba(90,79,212,0.15)',
+      borderColor: '#5a4fd4', pointBackgroundColor: '#5a4fd4', borderWidth: 2, pointRadius: 3
+    },{
+      label: 'Niveau cible',
+      data: [70,70,70,70,70],
+      backgroundColor: 'transparent',
+      borderColor: 'rgba(90,79,212,0.3)', pointBackgroundColor: 'rgba(90,79,212,0.3)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: radarOpts('#5a4fd4')
+});
+
+// ── OVERVIEW RADAR 2 — MÉDIATIQUE ──────────────────────────────
+new Chart(document.getElementById('radarMedia'), {
+  type: 'radar',
+  data: {
+    labels: ['Volume de\ncouverture','Maîtrise\ndu récit','Initiatives\npropres','Gestion\ncrises presse','Image\nintl.'],
+    datasets: [{
+      label: 'Score obtenu',
+      data: [85, 40, 20, 35, 80],
+      backgroundColor: 'rgba(26,158,110,0.15)',
+      borderColor: '#1a9e6e', pointBackgroundColor: '#1a9e6e', borderWidth: 2, pointRadius: 3
+    },{
+      label: 'Niveau cible',
+      data: [70,70,70,70,70],
+      backgroundColor: 'transparent',
+      borderColor: 'rgba(26,158,110,0.3)', pointBackgroundColor: 'rgba(26,158,110,0.3)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: radarOpts('#1a9e6e')
+});
+
+// ── OVERVIEW RADAR 3 — CULTUREL ────────────────────────────────
+new Chart(document.getElementById('radarCulture'), {
+  type: 'radar',
+  data: {
+    labels: ['Capital\nculturel propre','Conversations\npopulaires','Plateformes\nculturelles','Communauté\ndigitale','Résilience\ncrises culturelles'],
+    datasets: [{
+      label: 'Score obtenu',
+      data: [16, 24, 15, 53, 67],
+      backgroundColor: 'rgba(184,110,16,0.15)',
+      borderColor: '#b86e10', pointBackgroundColor: '#b86e10', borderWidth: 2, pointRadius: 3
+    },{
+      label: 'Niveau cible',
+      data: [70,70,70,70,70],
+      backgroundColor: 'transparent',
+      borderColor: 'rgba(184,110,16,0.3)', pointBackgroundColor: 'rgba(184,110,16,0.3)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: radarOpts('#b86e10')
+});
+
+// ── DETAIL RADAR 1 — INSTITUTIONNEL (onglet arènes) ────────────
+new Chart(document.getElementById('radarInstitutDetail'), {
+  type: 'radar',
+  data: {
+    labels: [
+      'Production normative\n(25 pts)',
+      'Actes souverains\nsymboliques (20 pts)',
+      'Légitimité régionale\n& intl. (20 pts)',
+      'Cohérence\nprogramme/actes (20 pts)',
+      'Stabilité\nde l\'exécutif (15 pts)'
+    ],
+    datasets: [{
+      label: 'Score Diomaye Faye',
+      data: [22, 17, 16, 13, 4],
+      backgroundColor: 'rgba(90,79,212,0.15)',
+      borderColor: '#5a4fd4', pointBackgroundColor: '#5a4fd4', borderWidth: 2, pointRadius: 4
+    },{
+      label: 'Score maximum possible',
+      data: [25, 20, 20, 20, 15],
+      backgroundColor: 'rgba(90,79,212,0.05)',
+      borderColor: 'rgba(90,79,212,0.25)', pointBackgroundColor: 'rgba(90,79,212,0.25)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 10 }, boxWidth: 8 } } },
+    scales: { r: {
+      min: 0, max: 25,
+      ticks: { display: false },
+      grid: { color: DARK_GRID },
+      angleLines: { color: DARK_GRID },
+      pointLabels: { color: DARK_TEXT, font: { size: 9 } }
+    }}
+  }
+});
+
+// ── DETAIL RADAR 2 — MÉDIATIQUE (onglet arènes) ────────────────
+new Chart(document.getElementById('radarMediaDetail'), {
+  type: 'radar',
+  data: {
+    labels: [
+      'Volume de couverture\n(20 pts)',
+      'Maîtrise du récit\n(25 pts)',
+      'Initiatives médiatiques\npropres (20 pts)',
+      'Gestion crises\nde presse (20 pts)',
+      'Image\ninternationale (15 pts)'
+    ],
+    datasets: [{
+      label: 'Score Diomaye Faye',
+      data: [17, 10, 4, 7, 12],
+      backgroundColor: 'rgba(26,158,110,0.15)',
+      borderColor: '#1a9e6e', pointBackgroundColor: '#1a9e6e', borderWidth: 2, pointRadius: 4
+    },{
+      label: 'Score maximum possible',
+      data: [20, 25, 20, 20, 15],
+      backgroundColor: 'rgba(26,158,110,0.05)',
+      borderColor: 'rgba(26,158,110,0.25)', pointBackgroundColor: 'rgba(26,158,110,0.25)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 10 }, boxWidth: 8 } } },
+    scales: { r: {
+      min: 0, max: 25,
+      ticks: { display: false },
+      grid: { color: DARK_GRID },
+      angleLines: { color: DARK_GRID },
+      pointLabels: { color: DARK_TEXT, font: { size: 9 } }
+    }}
+  }
+});
+
+// ── DETAIL RADAR 3 — CULTUREL (onglet arènes) ──────────────────
+new Chart(document.getElementById('radarCultureDetail'), {
+  type: 'radar',
+  data: {
+    labels: [
+      'Capital culturel\npropre (25 pts)',
+      'Conversations\npopulaires (25 pts)',
+      'Plateformes\nculturelles (20 pts)',
+      'Communauté\ndigitale (15 pts)',
+      'Résilience crises\nculturelles (15 pts)'
+    ],
+    datasets: [{
+      label: 'Score Diomaye Faye',
+      data: [4, 6, 3, 8, 10],
+      backgroundColor: 'rgba(184,110,16,0.15)',
+      borderColor: '#b86e10', pointBackgroundColor: '#b86e10', borderWidth: 2, pointRadius: 4
+    },{
+      label: 'Score maximum possible',
+      data: [25, 25, 20, 15, 15],
+      backgroundColor: 'rgba(184,110,16,0.05)',
+      borderColor: 'rgba(184,110,16,0.25)', pointBackgroundColor: 'rgba(184,110,16,0.25)',
+      borderWidth: 1, pointRadius: 2, borderDash: [4,3]
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 10 }, boxWidth: 8 } } },
+    scales: { r: {
+      min: 0, max: 25,
+      ticks: { display: false },
+      grid: { color: DARK_GRID },
+      angleLines: { color: DARK_GRID },
+      pointLabels: { color: DARK_TEXT, font: { size: 9 } }
+    }}
+  }
+});
+
+// NARRATIVE CHART
+new Chart(document.getElementById('narrativeChart'), {
+  type: 'line',
+  data: {
+    labels: ['Avr 24','Juil 24','Oct 24','Jan 25','Avr 25','Juil 25','Oct 25','Déc 25','Avr 26'],
+    datasets: [{
+      label: 'Sentiment "rupture/espoir"',
+      data: [90, 82, 75, 62, 55, 58, 52, 48, 45],
+      borderColor: '#3db88a', backgroundColor: 'rgba(61,184,138,0.08)', tension: 0.4, borderWidth: 2, pointRadius: 3
+    },{
+      label: 'Sentiment "bilan/critique"',
+      data: [10, 18, 28, 38, 45, 42, 52, 55, 58],
+      borderColor: '#d4881e', backgroundColor: 'rgba(212,136,30,0.08)', tension: 0.4, borderWidth: 2, pointRadius: 3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 11 }, boxWidth: 10 } } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } },
+      y: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID }, min: 0, max: 100 }
+    }
+  }
+});
+
+// MEDIA CHART
+new Chart(document.getElementById('mediaChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Presse nationale','Couverture intl.','TV sénégalaise','Radio','Conf. de presse propres'],
+    datasets: [{
+      label: 'Volume de mentions / initiative (%)',
+      data: [82, 71, 65, 55, 12],
+      backgroundColor: ['rgba(61,184,138,0.5)','rgba(61,184,138,0.4)','rgba(212,136,30,0.4)','rgba(212,136,30,0.35)','rgba(212,82,82,0.5)'],
+      borderColor: ['#3db88a','#3db88a','#d4881e','#d4881e','#d45252'],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 11 } }, grid: { color: DARK_GRID } },
+      y: { ticks: { color: DARK_TEXT, font: { size: 11 } }, grid: { color: DARK_GRID }, max: 100 }
+    }
+  }
+});
+
+// CULTURAL CHART
+new Chart(document.getElementById('culturalChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Avr 24','Juil 24','Oct 24','Jan 25','Avr 25','Juil 25','Oct 25','Nov 25','Avr 26'],
+    datasets: [{
+      label: 'Capital culturel propre',
+      data: [30, 28, 25, 22, 20, 22, 20, 15, 18],
+      backgroundColor: 'rgba(123,110,232,0.5)', borderColor: '#7b6ee8', borderWidth: 1
+    },{
+      label: 'Capital emprunté (Sonko/Pastef)',
+      data: [70, 68, 65, 68, 65, 63, 60, 55, 58],
+      backgroundColor: 'rgba(212,136,30,0.3)', borderColor: '#d4881e', borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 11 }, boxWidth: 10 } } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID }, stacked: false },
+      y: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID }, max: 100 }
+    }
+  }
+});
+
+// SOCIAL OVERVIEW
+new Chart(document.getElementById('socialOverview'), {
+  type: 'bar',
+  data: {
+    labels: ['Facebook','X (Twitter)','Instagram','TikTok','LinkedIn'],
+    datasets: [{
+      label: 'Audience BDF estimée (K)',
+      data: [560, 327, 45, 0, 28],
+      backgroundColor: ['rgba(24,119,242,0.5)','rgba(29,161,242,0.4)','rgba(225,48,108,0.4)','rgba(80,80,80,0.35)','rgba(10,102,194,0.4)'],
+      borderColor: ['#1877F2','#1DA1F2','#E1306C','#555','#0A66C2'],
+      borderWidth: 1
+    },{
+      label: 'Score de maturité (/100)',
+      data: [42, 58, 22, 8, 45],
+      backgroundColor: 'rgba(200,169,110,0.3)',
+      borderColor: '#c8a96e',
+      borderWidth: 1.5,
+      type: 'line',
+      yAxisID: 'y2',
+      tension: 0.3,
+      pointRadius: 5,
+      pointBackgroundColor: '#c8a96e'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 11 }, boxWidth: 10 } } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT }, grid: { color: DARK_GRID } },
+      y: { ticks: { color: DARK_TEXT }, grid: { color: DARK_GRID }, title: { display: true, text: 'Abonnés (K)', color: DARK_TEXT, font: { size: 10 } } },
+      y2: { position: 'right', min: 0, max: 100, ticks: { color: '#c8a96e', font: { size: 10 } }, grid: { display: false }, title: { display: true, text: 'Score /100', color: '#c8a96e', font: { size: 10 } } }
+    }
+  }
+});
+
+// SOCIAL RADAR
+new Chart(document.getElementById('socialRadar'), {
+  type: 'radar',
+  data: {
+    labels: ['Taille communauté','Fréquence contenu','Qualité engagement','Stratégie native','Gestion de crise','Identité de marque'],
+    datasets: [
+      { label: 'Facebook', data: [75, 40, 35, 25, 30, 35], borderColor: '#1877F2', backgroundColor: 'rgba(24,119,242,0.08)', borderWidth: 1.5, pointRadius: 2 },
+      { label: 'X (Twitter)', data: [55, 65, 45, 40, 50, 45], borderColor: '#1DA1F2', backgroundColor: 'rgba(29,161,242,0.08)', borderWidth: 1.5, pointRadius: 2 },
+      { label: 'Instagram', data: [20, 20, 25, 15, 20, 20], borderColor: '#E1306C', backgroundColor: 'rgba(225,48,108,0.06)', borderWidth: 1.5, pointRadius: 2 },
+      { label: 'TikTok', data: [5, 5, 10, 5, 10, 8], borderColor: '#aaa', backgroundColor: 'rgba(100,100,100,0.05)', borderWidth: 1.5, pointRadius: 2 },
+      { label: 'LinkedIn', data: [30, 35, 50, 30, 40, 45], borderColor: '#0A66C2', backgroundColor: 'rgba(10,102,194,0.08)', borderWidth: 1.5, pointRadius: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 11 }, boxWidth: 10 } } },
+    scales: { r: { min:0, max:100, ticks: { display:false }, grid: { color: DARK_GRID }, angleLines: { color: DARK_GRID }, pointLabels: { color: DARK_TEXT, font: { size: 10 } } } }
+  }
+});
+
+// PRÉSIDENCE AUDIENCE CHART
+new Chart(document.getElementById('presChartAudience'), {
+  type: 'bar',
+  data: {
+    labels: ['Facebook\n(likes)', 'Facebook\n(talking)', 'Instagram', 'presidence.sn\n(visites/mois)'],
+    datasets: [{
+      label: 'Audience (K)',
+      data: [857, 352, 293, 28],
+      backgroundColor: ['rgba(24,119,242,0.5)','rgba(24,119,242,0.25)','rgba(225,48,108,0.45)','rgba(26,158,110,0.4)'],
+      borderColor: ['#1877F2','#1877F2','#E1306C','#1a9e6e'],
+      borderWidth: 1.5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } },
+      y: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } }
+    }
+  }
+});
+
+// PRÉSIDENCE SCORE CHART
+new Chart(document.getElementById('presChartScore'), {
+  type: 'bar',
+  data: {
+    labels: ['Facebook', 'X @PR_Senegal', 'Instagram', 'presidence.sn'],
+    datasets: [{
+      label: 'Score éditorial /100',
+      data: [68, 72, 61, 65],
+      backgroundColor: ['rgba(24,119,242,0.4)','rgba(0,0,0,0.35)','rgba(225,48,108,0.4)','rgba(26,158,110,0.35)'],
+      borderColor: ['#1877F2','#333','#E1306C','#1a9e6e'],
+      borderWidth: 1.5
+    },{
+      label: 'Niveau cible',
+      data: [80, 80, 80, 80],
+      type: 'line',
+      borderColor: 'rgba(180,110,16,0.5)',
+      borderDash: [5,4],
+      borderWidth: 1.5,
+      pointRadius: 0,
+      backgroundColor: 'transparent'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: DARK_TEXT, font: { size: 11 }, boxWidth: 10 } } },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } },
+      y: { min: 0, max: 100, ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } }
+    }
+  }
+});
+
+// BENCHMARK CHART
+new Chart(document.getElementById('benchmarkChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Présidence\nSénégal\n@pr_senegal', 'Présidence\nCôte d\'Ivoire', 'Présidence\nGhana', 'Présidence\nRwanda\n@paulkagame', 'Présidence\nKenya', 'Présidence\nMaroc'],
+    datasets: [{
+      label: 'Abonnés Instagram (K) — estimation 2025',
+      data: [293, 180, 145, 820, 210, 95],
+      backgroundColor: [
+        'rgba(26,158,110,0.6)',
+        'rgba(90,79,212,0.35)','rgba(90,79,212,0.35)',
+        'rgba(212,136,30,0.5)',
+        'rgba(90,79,212,0.35)','rgba(90,79,212,0.35)'
+      ],
+      borderColor: ['#1a9e6e','#5a4fd4','#5a4fd4','#b86e10','#5a4fd4','#5a4fd4'],
+      borderWidth: 1.5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw}K abonnés` } }
+    },
+    scales: {
+      x: { ticks: { color: DARK_TEXT, font: { size: 10 }, maxRotation: 0 }, grid: { color: DARK_GRID } },
+      y: { ticks: { color: DARK_TEXT, font: { size: 10 } }, grid: { color: DARK_GRID } }
+    }
+  }
+});
+</script>
+</body>
+</html>
